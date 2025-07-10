@@ -9,23 +9,37 @@ import Home from './Home';
 import MainLayout from './Layouts/MainLayout';
 import ForgetPassword from './ForgetPassword';
 import SignUp from './SignUp';
+import SideBar from './SideBar';
+import { useState } from 'react';
 
 function App() {
   
+ const [login,setLogin] = useState(false);
+
+ const loginConfirm = () => {
+  setLogin(true);
+ }
+
   return (
+   <div>
+     
+     
+  
     <BrowserRouter>
+    {login && <SideBar /> }
         <Routes>
-                <Route path='/' element = {<Login />}/>
+                <Route path='/' element = {<Login login = {loginConfirm} /> }/>
                 <Route path='/ForgetPassword' element = {<ForgetPassword/>}/>
                 <Route path='/SignUp' element= {<SignUp/>}/>
-                <Route element={<MainLayout />}>
-                      <Route path='/Home' element = {<Home/> } />
-                      <Route path='/Blog' element = {<Blog/>}/>
-                      <Route path='/Contact-us' element = {<Contact/>} />
-                </Route>
-                 
+                
+                <Route path='/Home' element = {<Home/> } />
+                <Route path='/Blog' element = {<Blog/>}/>
+                <Route path='/Contact-us' element = {<Contact/>} />
+                     
           </Routes>
     </BrowserRouter>
+
+    </div>
   );
 }
 

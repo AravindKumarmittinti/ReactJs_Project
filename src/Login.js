@@ -2,7 +2,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-const Login = () => {
+const Login = ({login}) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,6 +24,7 @@ const Login = () => {
     }
 
     setError('');
+    login();
     navigate('/home');
   };
 
@@ -60,9 +61,9 @@ const Login = () => {
           <button type="submit" style={buttonStyle}>Login</button>
 
           <div style={footerLinks}>
-              <span style={linkStyle} onClick={() => navigate('/ForgetPassword')}>Forgot Password?</span>
+              <span style={linkStyle} onClick={() => navigate('./ForgetPassword')}>Forgot Password?</span>
               <span style={{ color: '#999' }}>|</span>
-              <span style={linkStyle} onClick={() => navigate('/signup')}>Sign Up</span>
+              <span style={linkStyle} onClick={() => navigate('./Signup')}>Sign Up</span>
           </div>
 
         </form>
